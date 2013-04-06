@@ -1,6 +1,7 @@
 ---
 layout: old_post
-title: Le mind mapping.
+title: "Le mind mapping."
+lang: fr
 description: Le mind mapping.
 tags: [mémoire de recherche, mind mapping]
 ---

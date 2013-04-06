@@ -1,6 +1,7 @@
 ---
 layout: old_post
-title: Utiliser le bootstrap twitter avec symfony2
+title: "Utiliser le bootstrap twitter avec symfony2"
+lang: fr
 description: Utiliser le bootstrap twitter avec symfony2
 tags: [symfony2, twitter, less, assetic]
 ---

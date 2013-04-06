@@ -1,6 +1,7 @@
 ---
 layout: old_post
-title: Des blogs BDs à la pelle...
+title: "Des blogs BDs à la pelle..."
+lang: fr
 description: Des blogs BDs à la pelle...
 tags: [détente, bds]
 ---

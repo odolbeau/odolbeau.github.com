@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "HTML5: Désactiver la validation de vos forms"
+lang: fr
 description: "HTML5: Désactiver la validation de vos forms"
 tags: [symfony2, html5, validation, form]
 ---

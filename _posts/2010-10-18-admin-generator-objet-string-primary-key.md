@@ -1,6 +1,7 @@
 ---
 layout: old_post
 title: "Admin generator: Objet ayant un string en primary key"
+lang: fr
 description: "Admin generator: Objet ayant un string en primary key"
 tags: [symfony, admin generator, primary key, propel]
 ---

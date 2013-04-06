@@ -1,6 +1,7 @@
 ---
 layout: old_post
-title: Quelques cheatsheets Symfony...
+title: "Quelques cheatsheets Symfony..."
+lang: fr
 description: Quelques cheatsheets Symfony...
 tags: [symfony, cheatsheets]
 ---

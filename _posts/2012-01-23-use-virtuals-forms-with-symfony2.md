@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Use virtuals forms with Symfony2
+title: "Use virtuals forms with Symfony2"
 description: Use virtuals forms with Symfony2
 tags: [symfony2, forms, virtual]
 ---

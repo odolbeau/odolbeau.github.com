@@ -1,6 +1,7 @@
 ---
 layout: old_post
-title: Beaucoup de changements
+title: "Beaucoup de changements"
+lang: fr
 description: Beaucoup de changements
 tags: [changements, design, relooking]
 ---

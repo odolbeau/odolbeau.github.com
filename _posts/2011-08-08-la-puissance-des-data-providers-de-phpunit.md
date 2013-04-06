@@ -1,6 +1,7 @@
 ---
 layout: post
-title: La puissance des data providers de PHPUnit
+title: "La puissance des data providers de PHPUnit"
+lang: fr
 description: La puissance des data providers de PHPUnit
 tags: [tests unitaires, phpunit, data providers]
 ---

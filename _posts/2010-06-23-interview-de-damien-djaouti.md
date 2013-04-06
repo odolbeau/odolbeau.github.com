@@ -1,6 +1,7 @@
 ---
 layout: old_post
-title: Interview de Damien DJAOUTI
+title: "Interview de Damien DJAOUTI"
+lang: fr
 description: Interview de Damien DJAOUTI
 tags: [mémoire de recherche, interview]
 ---

@@ -1,6 +1,7 @@
 ---
 layout: old_post
 title: "Mémoire de recherche: Déroulement"
+lang: fr
 description: "Mémoire de recherche: Déroulement"
 tags: [mémoire de recherche]
 ---

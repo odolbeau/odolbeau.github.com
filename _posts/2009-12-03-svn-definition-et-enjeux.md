@@ -1,6 +1,7 @@
 ---
 layout: old_post
 title: "SVN: Définition et enjeux"
+lang: fr
 description: "SVN: Définition et enjeux"
 tags: [svn, subversion]
 ---

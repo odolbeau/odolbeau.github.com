@@ -1,6 +1,7 @@
 ---
 layout: old_post
-title: Templates gratuits
+title: "Templates gratuits"
+lang: fr
 description: Templates gratuits
 tags: [templates, design]
 ---
