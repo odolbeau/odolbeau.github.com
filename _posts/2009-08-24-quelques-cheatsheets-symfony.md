@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: old_post
 title: Quelques cheatsheets Symfony...
 description: Quelques cheatsheets Symfony...
 tags: [symfony, cheatsheets]

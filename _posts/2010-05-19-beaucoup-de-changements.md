@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: old_post
 title: Beaucoup de changements
 description: Beaucoup de changements
 tags: [changements, design, relooking]

@@ -6,11 +6,14 @@ layout: base
 
 <ul>
     {% for post in site.posts %}
-        <li>
-            <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date_to_long_string }}</time> »
-            <a href="{{ post.url }}">{{ post.title }}</a>
-        </li>
+        {% if post.layout != 'old_post' %}
+            <li>
+                <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date_to_long_string }}</time> »
+                <a href="{{ post.url }}">{{ post.title }}</a>
+            </li>
+        {% endif %}
     {% endfor %}
+    <li><a href="/archived.html">Archived posts</a></li>
 </ul>
 
 <h1>Talks</h1>

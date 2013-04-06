@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: old_post
 title: Installation de symfony sous windows
 description: Installation de symfony sous windows
 tags: [symfony, php, windows, wamp]

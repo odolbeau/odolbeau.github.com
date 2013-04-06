@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: old_post
 title: "Gérer plusieurs sites avec les virtuals hosts d'Apache"
 description: "Gérer plusieurs sites avec les virtuals hosts d'Apache"
 tags: [apache, virtual hosts]

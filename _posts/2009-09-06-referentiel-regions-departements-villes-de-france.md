@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: old_post
 title: "Référentiel des régions, départements et villes de France"
 description: "Référentiel des régions, départements et villes de France"
 tags: [référentiel, régions, départements, villes, France, symfony, propel]

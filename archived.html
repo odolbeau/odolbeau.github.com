@@ -1,0 +1,21 @@
+---
+layout: base
+---
+
+<h1>Archived posts</h1>
+
+<div class="alert alert-warning">
+    Please keep in mind that these articles were written quite a long time ago.<br />
+    They're probably outdated.
+</div>
+
+<ul>
+    {% for post in site.posts %}
+        {% if post.layout == 'old_post' %}
+            <li>
+                <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date_to_long_string }}</time> »
+                <a href="{{ post.url }}">{{ post.title }}</a>
+            </li>
+        {% endif %}
+    {% endfor %}
+</ul>

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: old_post
 title: Utiliser les forms virtuals avec Symfony2
 description: Utiliser les forms virtuals avec Symfony2
 tags: [symfony2, forms, virtual]

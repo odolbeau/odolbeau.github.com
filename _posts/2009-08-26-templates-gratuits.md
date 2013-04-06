@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: old_post
 title: Templates gratuits
 description: Templates gratuits
 tags: [templates, design]

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: old_post
 title: "Mémoire de recherche: Déroulement"
 description: "Mémoire de recherche: Déroulement"
 tags: [mémoire de recherche]

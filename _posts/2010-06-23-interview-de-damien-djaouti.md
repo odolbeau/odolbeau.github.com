@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: old_post
 title: Interview de Damien DJAOUTI
 description: Interview de Damien DJAOUTI
 tags: [mémoire de recherche, interview]

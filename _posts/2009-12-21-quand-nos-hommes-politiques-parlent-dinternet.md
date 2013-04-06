@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: old_post
 title: Quand nos hommes politiques parlent d'Internet...
 description: Quand nos hommes politiques parlent d'Internet...
 tags: [politique, internet]
