@@ -1,0 +1,169 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <title>Symfony2 cache warmer</title>
+
+        <meta name="author" content="Olivier Dolbeau" />
+        <meta name="description" content=" - Olivier Dolbeau" />
+        <meta name="keywords" content="olivier, dolbeau, blog, Symfony2" />
+
+        <link rel="stylesheet" type="text/css" href="/assets/css/base.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="/assets/css/pygments.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="/assets/css/alerts.css" media="all" />
+
+        <!-- Allow html5 elements to be style properly for IE v8 and before -->
+        <!--[if lt IE9]><script src="/js/html5-ie.js"></script><![endif]-->
+
+        
+            <link rel="alternate" type="application/rss+xml" href="http://feeds.feedburner.com/odolbeau" title="RSS Feed - Olivier Dolbeau">
+        
+
+        
+            <script type="text/javascript">
+                var _gaq = _gaq || [];
+                _gaq.push(['_setAccount', 'UA-10214242-1']);
+                _gaq.push(['_trackPageview']);
+                _gaq.push(['_trackPageLoadTime']);
+
+                (function() {
+                    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                })();
+            </script>
+        
+    </head>
+    <body>
+        
+            <a href="http://github.com/odolbeau/odolbeau.github.com"><img style="position: absolute; top: 0; right: 0; border: 0;" src="/assets/images/github.png" alt="Fork me on GitHub" /></a>
+        
+        <div id="wrapper">
+            <header role="banner">
+                <div id="site-title"><a href="/index.html">Olivier Dolbeau</a></div>
+                <div id="site-description">Web Developer, Symfony2 fan, beer lover.</div>
+            </header>
+            <div id="content">
+                <article itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+        <h1 itemprop="name">Symfony2 cache warmer</h1>
+        <p class="meta">
+            by Olivier Dolbeau
+            on <time itemprop="datePublished" datetime="2012-07-15">
+                15 July 2012
+            </time>
+        </p>
+    </header>
+    <div itemprop="articleBody">
+        <p>For this first post since 6 months, let me introduce to you the CacheWarmer class.</p>
+
+<h2 id='cache_warmer_what_is_this'>Cache warmer? What is this?</h2>
+
+<p>A cache warmer is just a class that writes in a file to store data. Really simple.</p>
+
+<p>Look into you&#8217;re <code>app/cache</code> directory. Here is an example of what you can find:</p>
+
+<ul>
+<li>Global configuration</li>
+
+<li>Translations</li>
+
+<li>Assetic configuration</li>
+
+<li>Doctrine proxies classes</li>
+
+<li>Twig compiled templates - &#8230;</li>
+</ul>
+
+<p>Lot of things, created by cache warmers.</p>
+
+<h2 id='how_to_use_cache_warmer'>How to use cache warmer?</h2>
+
+<p>Juste create a file that extend the <a title='CacheWarmerInterface definition' href='https://github.com/symfony/symfony/blob/master/src/Symfony/Component/HttpKernel/CacheWarmer/CacheWarmerInterface.php'>CacheWarmerInterface</a> provided by the HttpKernel Component.</p>
+<div class='highlight'><pre><code class='php'><span class='cp'>&lt;?php</span>
+
+<span class='k'>use</span> <span class='nx'>Symfony\Component\HttpKernel\CacheWarmer\CacheWarmerInterface</span><span class='p'>;</span>
+
+<span class='k'>class</span> <span class='nc'>MyCustomeCacheWarmer</span> <span class='k'>implements</span> <span class='nx'>CacheWarmerInterface</span>
+<span class='p'>{</span>
+    <span class='k'>public</span> <span class='k'>function</span> <span class='nf'>warmUp</span><span class='p'>(</span><span class='nv'>$cacheDir</span><span class='p'>)</span>
+    <span class='p'>{</span>
+        <span class='c1'>// Create a file here</span>
+        <span class='c1'>// Write in it</span>
+    <span class='p'>}</span>
+
+    <span class='k'>public</span> <span class='k'>function</span> <span class='nf'>isOptionnal</span><span class='p'>()</span>
+    <span class='p'>{</span>
+        <span class='c1'>// By default, all CacheWarmer are called by the `app/console cache:warmup` command.</span>
+        <span class='c1'>// But you can specify the `--no-optional-warmers` to skip non optional ones.</span>
+        <span class='k'>return</span> <span class='k'>false</span><span class='p'>;</span>
+    <span class='p'>}</span>
+<span class='p'>}</span>
+</code></pre></div>
+<p>For the implementation, you can take a look at the <a title='Symfony2 TemplatePathsCacheWarmer' href='https://github.com/symfony/symfony/blob/master/src/Symfony/Bundle/FrameworkBundle/CacheWarmer/TemplatePathsCacheWarmer.php'>TemplatePathsCacheWarmer</a> for example.</p>
+
+<p>Of course, you have to declare your CacheWarmer as a service. Do not forget to tag it with <code>kernel.cache_warmer</code>:</p>
+<div class='highlight'><pre><code class='xml'><span class='nt'>&lt;service</span> <span class='na'>id=</span><span class='s'>&quot;my_custom.cache_warmer&quot;</span> <span class='na'>class=</span><span class='s'>&quot;path/to/MyCustomCacheWarmer&quot;</span><span class='nt'>&gt;</span>
+    <span class='nt'>&lt;tag</span> <span class='na'>name=</span><span class='s'>&quot;kernel.cache_warmer&quot;</span> <span class='nt'>/&gt;</span>
+<span class='nt'>&lt;/service&gt;</span>
+</code></pre></div>
+<p>Now, if you run the command <code>app/console cache:warmup</code> (or <code>app/console cache:clear</code> without the <code>--no-warmup</code> option) your cache file should be created. (Search it in the <code>app/cache/</code> folder).</p>
+
+<p>To use your cached data, it&#8217;s very simple. Look at <a title='Symfony TemplateLocator' href='https://github.com/symfony/symfony/blob/master/src/Symfony/Bundle/FrameworkBundle/Templating/Loader/TemplateLocator.php'>TemplateLocator</a>.</p>
+
+<p>The <code>TemplateLocator</code> simply require the cached file and store the result into a var. To do the same thing, simply store a return statement in your file. For example, the <code>app/cache/dev/templates.php</code> file looks like this:</p>
+<div class='highlight'><pre><code class='php'><span class='cp'>&lt;?php</span> <span class='k'>return</span> <span class='k'>array</span> <span class='p'>(</span>
+    <span class='s1'>&#39;template_name&#39;</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;path/to/template&#39;</span><span class='p'>,</span>
+    <span class='c1'>// ...</span>
+<span class='p'>),</span>
+</code></pre></div>
+<p>You&#8217;re done. You can now use your custom CacheWarmer in your application. :)</p>
+    </div>
+
+    </article>
+
+
+    <div id="related-posts">
+        <span class="underline">Related posts:</span>
+        <ul>
+            
+                <li><a href="/blog/use-virtuals-forms-with-symfony2.html">Use virtuals forms with Symfony2</a></li>
+            
+                <li><a href="/blog/utiliser-les-forms-virtuals-avec-symfony2.html">Utiliser les forms virtuals avec Symfony2</a></li>
+            
+                <li><a href="/blog/utiliser-le-bootstrap-twitter-avec-symfony2.html">Utiliser le bootstrap twitter avec symfony2</a></li>
+            
+        </ul>
+    </div>
+
+
+<div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    var disqus_shortname = 'odolbeau'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+            </div>
+            <div id="footer">
+                <div id="col-left">
+                    <a rel="license" href="http://creativecommons.org/licenses/by-nc/2.0/fr/">
+                        <img alt="Licence Creative Commons" src="http://i.creativecommons.org/l/by-nc/2.0/fr/80x15.png" width="80" height="15" />
+                    </a>
+                </div>
+                <div id="col-right">
+                    <p>Powered by <a href="http://jekyllrb.com/" title="Jekyll official website">Jekyll</a></p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

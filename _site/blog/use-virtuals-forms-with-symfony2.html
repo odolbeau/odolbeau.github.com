@@ -1,0 +1,298 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <title>Use virtuals forms with Symfony2</title>
+
+        <meta name="author" content="Olivier Dolbeau" />
+        <meta name="description" content="Use virtuals forms with Symfony2 - Olivier Dolbeau" />
+        <meta name="keywords" content="olivier, dolbeau, blog, Symfony2" />
+
+        <link rel="stylesheet" type="text/css" href="/assets/css/base.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="/assets/css/pygments.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="/assets/css/alerts.css" media="all" />
+
+        <!-- Allow html5 elements to be style properly for IE v8 and before -->
+        <!--[if lt IE9]><script src="/js/html5-ie.js"></script><![endif]-->
+
+        
+            <link rel="alternate" type="application/rss+xml" href="http://feeds.feedburner.com/odolbeau" title="RSS Feed - Olivier Dolbeau">
+        
+
+        
+            <script type="text/javascript">
+                var _gaq = _gaq || [];
+                _gaq.push(['_setAccount', 'UA-10214242-1']);
+                _gaq.push(['_trackPageview']);
+                _gaq.push(['_trackPageLoadTime']);
+
+                (function() {
+                    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                })();
+            </script>
+        
+    </head>
+    <body>
+        
+            <a href="http://github.com/odolbeau/odolbeau.github.com"><img style="position: absolute; top: 0; right: 0; border: 0;" src="/assets/images/github.png" alt="Fork me on GitHub" /></a>
+        
+        <div id="wrapper">
+            <header role="banner">
+                <div id="site-title"><a href="/index.html">Olivier Dolbeau</a></div>
+                <div id="site-description">Web Developer, Symfony2 fan, beer lover.</div>
+            </header>
+            <div id="content">
+                <article itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+        <h1 itemprop="name">Use virtuals forms with Symfony2</h1>
+        <p class="meta">
+            by Olivier Dolbeau
+            on <time itemprop="datePublished" datetime="2012-01-23">
+                23 January 2012
+            </time>
+        </p>
+    </header>
+    <div itemprop="articleBody">
+        <div class='alert alert-info'>
+This article is now an official <a href='http://www.symfony.com/doc/current/cookbook/form/use_virtuals_forms.html'>cookbook</a> since <a href='https://github.com/symfony/symfony-docs/commit/a7781433cf6af9b43f924d2f61525537141d27bf'>February 2012</a>.
+</div>
+<p><em>Wait! What? You already write <a title='Utiliser les forms virtuals avec Symfony2' href='/blog/utiliser-les-forms-virtuals-avec-symfony2.html'>this</a> before! Oo</em></p>
+
+<p>Yes I do! But in french! And it seems it was not very clear&#8230; So let me explain virtuals forms again and this time&#8230; in english!</p>
+
+<p>We have 2 entities. A Company and a Customer :</p>
+<div class='half-left'>
+
+<div class='highlight'><pre><code class='php'><span class='cp'>&lt;?php</span>
+
+<span class='k'>namespace</span> <span class='o'>...</span><span class='p'>;</span>
+
+<span class='k'>class</span> <span class='nc'>Company</span>
+<span class='p'>{</span>
+    <span class='k'>private</span> <span class='nv'>$name</span><span class='p'>;</span>
+    <span class='k'>private</span> <span class='nv'>$website</span><span class='p'>;</span>
+
+    <span class='k'>private</span> <span class='nv'>$address</span><span class='p'>;</span>
+    <span class='k'>private</span> <span class='nv'>$zipcode</span><span class='p'>;</span>
+    <span class='k'>private</span> <span class='nv'>$city</span><span class='p'>;</span>
+    <span class='k'>private</span> <span class='nv'>$country</span><span class='p'>;</span>
+
+    <span class='c1'>// Some nice getters / setters here.</span>
+<span class='p'>}</span>
+</code></pre></div>
+
+</div><div class='half-right'>
+
+<div class='highlight'><pre><code class='php'><span class='cp'>&lt;?php</span>
+
+<span class='k'>namespace</span> <span class='o'>...</span><span class='p'>;</span>
+
+<span class='k'>class</span> <span class='nc'>Customer</span>
+<span class='p'>{</span>
+    <span class='k'>private</span> <span class='nv'>$firstName</span><span class='p'>;</span>
+    <span class='k'>private</span> <span class='nv'>$lastName</span><span class='p'>;</span>
+
+    <span class='k'>private</span> <span class='nv'>$address</span><span class='p'>;</span>
+    <span class='k'>private</span> <span class='nv'>$zipcode</span><span class='p'>;</span>
+    <span class='k'>private</span> <span class='nv'>$city</span><span class='p'>;</span>
+    <span class='k'>private</span> <span class='nv'>$country</span><span class='p'>;</span>
+
+    <span class='c1'>// Some nice getters / setters here.</span>
+<span class='p'>}</span>
+</code></pre></div>
+
+</div><div class='clear' />
+<p>Like you can see, both of our entities have these fields: <code>address</code>, <code>zipcode</code>, <code>city</code>, <code>country</code>.</p>
+
+<p>Now, we want to build 2 forms. One for create/update a Company and the second to create/update a Customer.</p>
+
+<p>Of course, we have only two entities which have to contains some location informations&#8230; for now! Maybe later, some entities will have this fields. So, we have to find a solution to not duplicate our code!</p>
+
+<p>First, we create very simple CompanyType and CustomerType:</p>
+<div class='half-left'>
+
+<div class='highlight'><pre><code class='php'><span class='cp'>&lt;?php</span>
+
+<span class='k'>namespace</span> <span class='o'>...</span><span class='p'>;</span>
+
+<span class='k'>use</span> <span class='nx'>Symfony\Component\Form\AbstractType</span><span class='p'>;</span>
+<span class='k'>use</span> <span class='nx'>Symfony\Component\Form\FormBuilder</span><span class='p'>;</span>
+
+<span class='k'>class</span> <span class='nc'>CompanyType</span> <span class='k'>extends</span> <span class='nx'>AbstractType</span>
+<span class='p'>{</span>
+    <span class='k'>public</span> <span class='k'>function</span> <span class='nf'>buildForm</span><span class='p'>(</span><span class='nx'>FormBuilder</span> <span class='nv'>$builder</span><span class='p'>,</span> <span class='k'>array</span> <span class='nv'>$options</span><span class='p'>)</span>
+    <span class='p'>{</span>
+        <span class='nv'>$builder</span>
+            <span class='o'>-&gt;</span><span class='na'>add</span><span class='p'>(</span><span class='s1'>&#39;name&#39;</span><span class='p'>,</span> <span class='s1'>&#39;text&#39;</span><span class='p'>)</span>
+            <span class='o'>-&gt;</span><span class='na'>add</span><span class='p'>(</span><span class='s1'>&#39;website&#39;</span><span class='p'>,</span> <span class='s1'>&#39;text&#39;</span><span class='p'>)</span>
+        <span class='p'>;</span>
+    <span class='p'>}</span>
+
+    <span class='k'>public</span> <span class='k'>function</span> <span class='nf'>getDefaultOptions</span><span class='p'>(</span><span class='k'>array</span> <span class='nv'>$options</span><span class='p'>)</span>
+    <span class='p'>{</span>
+        <span class='k'>return</span> <span class='k'>array</span><span class='p'>(</span>
+            <span class='s1'>&#39;data_class&#39;</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;...\Company&#39;</span><span class='p'>,</span>
+        <span class='p'>);</span>
+    <span class='p'>}</span>
+
+    <span class='k'>public</span> <span class='k'>function</span> <span class='nf'>getName</span><span class='p'>()</span>
+    <span class='p'>{</span>
+        <span class='k'>return</span> <span class='s1'>&#39;company&#39;</span><span class='p'>;</span>
+    <span class='p'>}</span>
+<span class='p'>}</span>
+</code></pre></div>
+
+</div><div class='half-right'>
+
+<div class='highlight'><pre><code class='php'><span class='cp'>&lt;?php</span>
+
+<span class='k'>namespace</span> <span class='o'>...</span><span class='p'>;</span>
+
+<span class='k'>use</span> <span class='nx'>Symfony\Component\Form\AbstractType</span><span class='p'>;</span>
+<span class='k'>use</span> <span class='nx'>Symfony\Component\Form\FormBuilder</span><span class='p'>;</span>
+
+<span class='k'>class</span> <span class='nc'>CustomerType</span> <span class='k'>extends</span> <span class='nx'>AbstractType</span>
+<span class='p'>{</span>
+    <span class='k'>public</span> <span class='k'>function</span> <span class='nf'>buildForm</span><span class='p'>(</span><span class='nx'>FormBuilder</span> <span class='nv'>$builder</span><span class='p'>,</span> <span class='k'>array</span> <span class='nv'>$options</span><span class='p'>)</span>
+    <span class='p'>{</span>
+        <span class='nv'>$builder</span>
+            <span class='o'>-&gt;</span><span class='na'>add</span><span class='p'>(</span><span class='s1'>&#39;firstName&#39;</span><span class='p'>,</span> <span class='s1'>&#39;text&#39;</span><span class='p'>)</span>
+            <span class='o'>-&gt;</span><span class='na'>add</span><span class='p'>(</span><span class='s1'>&#39;lastName&#39;</span><span class='p'>,</span> <span class='s1'>&#39;text&#39;</span><span class='p'>)</span>
+        <span class='p'>;</span>
+    <span class='p'>}</span>
+
+    <span class='k'>public</span> <span class='k'>function</span> <span class='nf'>getDefaultOptions</span><span class='p'>(</span><span class='k'>array</span> <span class='nv'>$options</span><span class='p'>)</span>
+    <span class='p'>{</span>
+        <span class='k'>return</span> <span class='k'>array</span><span class='p'>(</span>
+            <span class='s1'>&#39;data_class&#39;</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;...\Customer&#39;</span><span class='p'>,</span>
+        <span class='p'>);</span>
+    <span class='p'>}</span>
+
+    <span class='k'>public</span> <span class='k'>function</span> <span class='nf'>getName</span><span class='p'>()</span>
+    <span class='p'>{</span>
+        <span class='k'>return</span> <span class='s1'>&#39;customer&#39;</span><span class='p'>;</span>
+    <span class='p'>}</span>
+<span class='p'>}</span>
+</code></pre></div>
+
+</div><div class='clear' />
+<p>Definitely nothing complicated here.</p>
+
+<p>Now, we have to deal with our four duplicated fields&#8230; Here is a (simple) location FormType:</p>
+<div class='highlight'><pre><code class='php'><span class='cp'>&lt;?php</span>
+
+<span class='k'>namespace</span> <span class='o'>...</span><span class='p'>;</span>
+
+<span class='k'>use</span> <span class='nx'>Symfony\Component\Form\AbstractType</span><span class='p'>;</span>
+<span class='k'>use</span> <span class='nx'>Symfony\Component\Form\FormBuilder</span><span class='p'>;</span>
+
+<span class='k'>class</span> <span class='nc'>LocationType</span> <span class='k'>extends</span> <span class='nx'>AbstractType</span>
+<span class='p'>{</span>
+    <span class='k'>public</span> <span class='k'>function</span> <span class='nf'>buildForm</span><span class='p'>(</span><span class='nx'>FormBuilder</span> <span class='nv'>$builder</span><span class='p'>,</span> <span class='k'>array</span> <span class='nv'>$options</span><span class='p'>)</span>
+    <span class='p'>{</span>
+        <span class='nv'>$builder</span>
+            <span class='o'>-&gt;</span><span class='na'>add</span><span class='p'>(</span><span class='s1'>&#39;address&#39;</span><span class='p'>,</span> <span class='s1'>&#39;textarea&#39;</span><span class='p'>)</span>
+            <span class='o'>-&gt;</span><span class='na'>add</span><span class='p'>(</span><span class='s1'>&#39;zipcode&#39;</span><span class='p'>,</span> <span class='s1'>&#39;string&#39;</span><span class='p'>)</span>
+            <span class='o'>-&gt;</span><span class='na'>add</span><span class='p'>(</span><span class='s1'>&#39;city&#39;</span><span class='p'>,</span> <span class='s1'>&#39;string&#39;</span><span class='p'>)</span>
+            <span class='o'>-&gt;</span><span class='na'>add</span><span class='p'>(</span><span class='s1'>&#39;country&#39;</span><span class='p'>,</span> <span class='s1'>&#39;text&#39;</span><span class='p'>)</span>
+        <span class='p'>;</span>
+    <span class='p'>}</span>
+
+    <span class='k'>public</span> <span class='k'>function</span> <span class='nf'>getDefaultOptions</span><span class='p'>(</span><span class='k'>array</span> <span class='nv'>$options</span><span class='p'>)</span>
+    <span class='p'>{</span>
+        <span class='k'>return</span> <span class='k'>array</span><span class='p'>(</span>
+        <span class='p'>);</span>
+    <span class='p'>}</span>
+
+    <span class='k'>public</span> <span class='k'>function</span> <span class='nf'>getName</span><span class='p'>()</span>
+    <span class='p'>{</span>
+        <span class='k'>return</span> <span class='s1'>&#39;location&#39;</span><span class='p'>;</span>
+    <span class='p'>}</span>
+<span class='p'>}</span>
+</code></pre></div>
+<p>We can&#8217;t specify a data_class option in this FormType because, we don&#8217;t have a Location Entity.<br /> We don&#8217;t have a location field in our entity so we can&#8217;t directly link our LocationType.<br /> Of course, we absolutely want to have a dedicated FormType to deal with location (remember, DRY!)</p>
+
+<p><strong>There is a solution!</strong></p>
+
+<p>We can set the option <code>&#39;virtual&#39; =&gt; true</code> in the <code>getDefaultOptions</code> method of our LocationType and directly start use it in our 2 first types.</p>
+
+<p>Look at the result:</p>
+<div class='half-left'>
+
+<div class='highlight'><pre><code class='php'><span class='cp'>&lt;?php</span>
+<span class='c1'>// CompanyType</span>
+
+<span class='k'>public</span> <span class='k'>function</span> <span class='nf'>buildForm</span><span class='p'>(</span><span class='nx'>FormBuilder</span> <span class='nv'>$builder</span><span class='p'>,</span> <span class='k'>array</span> <span class='nv'>$options</span><span class='p'>)</span>
+<span class='p'>{</span>
+    <span class='nv'>$builder</span><span class='o'>-&gt;</span><span class='na'>add</span><span class='p'>(</span><span class='s1'>&#39;foo&#39;</span><span class='p'>,</span> <span class='k'>new</span> <span class='nx'>LocationType</span><span class='p'>());</span>
+<span class='p'>}</span>
+</code></pre></div>
+
+</div><div class='half-right'>
+
+<div class='highlight'><pre><code class='php'><span class='cp'>&lt;?php</span>
+<span class='c1'>// CustomerType</span>
+
+<span class='k'>public</span> <span class='k'>function</span> <span class='nf'>buildForm</span><span class='p'>(</span><span class='nx'>FormBuilder</span> <span class='nv'>$builder</span><span class='p'>,</span> <span class='k'>array</span> <span class='nv'>$options</span><span class='p'>)</span>
+<span class='p'>{</span>
+    <span class='nv'>$builder</span><span class='o'>-&gt;</span><span class='na'>add</span><span class='p'>(</span><span class='s1'>&#39;bar&#39;</span><span class='p'>,</span> <span class='k'>new</span> <span class='nx'>LocationType</span><span class='p'>());</span>
+<span class='p'>}</span>
+</code></pre></div>
+
+</div><div class='clear' />
+<p>With the virtual option set to false (default behavior), the Form Component expect a Foo (or Bar) object or array which contains our four location fields. Of course, we don&#8217;t have this object/array in our entities and we don&#8217;t want it!</p>
+
+<p>With the virtual option set to true, the Form Component skip our Foo (or Bar) object or array. So, it directly access to our 4 location fields which are in the parent entity!</p>
+
+<p>(One more time, thank to <a title='Alexandre Salome website' href='http://alexandre-salome.fr/'>Alexandre Salomé</a> for the tips)</p>
+    </div>
+
+    </article>
+
+
+    <div id="related-posts">
+        <span class="underline">Related posts:</span>
+        <ul>
+            
+                <li><a href="/blog/symfony2-cache-warmer.html">Symfony2 cache warmer</a></li>
+            
+                <li><a href="/blog/utiliser-les-forms-virtuals-avec-symfony2.html">Utiliser les forms virtuals avec Symfony2</a></li>
+            
+                <li><a href="/blog/utiliser-le-bootstrap-twitter-avec-symfony2.html">Utiliser le bootstrap twitter avec symfony2</a></li>
+            
+        </ul>
+    </div>
+
+
+<div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    var disqus_shortname = 'odolbeau'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+            </div>
+            <div id="footer">
+                <div id="col-left">
+                    <a rel="license" href="http://creativecommons.org/licenses/by-nc/2.0/fr/">
+                        <img alt="Licence Creative Commons" src="http://i.creativecommons.org/l/by-nc/2.0/fr/80x15.png" width="80" height="15" />
+                    </a>
+                </div>
+                <div id="col-right">
+                    <p>Powered by <a href="http://jekyllrb.com/" title="Jekyll official website">Jekyll</a></p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

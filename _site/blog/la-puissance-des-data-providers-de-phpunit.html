@@ -1,0 +1,153 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <title>La puissance des data providers de PHPUnit</title>
+
+        <meta name="author" content="Olivier Dolbeau" />
+        <meta name="description" content="La puissance des data providers de PHPUnit - Olivier Dolbeau" />
+        <meta name="keywords" content="olivier, dolbeau, blog, Symfony2" />
+
+        <link rel="stylesheet" type="text/css" href="/assets/css/base.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="/assets/css/pygments.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="/assets/css/alerts.css" media="all" />
+
+        <!-- Allow html5 elements to be style properly for IE v8 and before -->
+        <!--[if lt IE9]><script src="/js/html5-ie.js"></script><![endif]-->
+
+        
+            <link rel="alternate" type="application/rss+xml" href="http://feeds.feedburner.com/odolbeau" title="RSS Feed - Olivier Dolbeau">
+        
+
+        
+            <script type="text/javascript">
+                var _gaq = _gaq || [];
+                _gaq.push(['_setAccount', 'UA-10214242-1']);
+                _gaq.push(['_trackPageview']);
+                _gaq.push(['_trackPageLoadTime']);
+
+                (function() {
+                    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                })();
+            </script>
+        
+    </head>
+    <body>
+        
+            <a href="http://github.com/odolbeau/odolbeau.github.com"><img style="position: absolute; top: 0; right: 0; border: 0;" src="/assets/images/github.png" alt="Fork me on GitHub" /></a>
+        
+        <div id="wrapper">
+            <header role="banner">
+                <div id="site-title"><a href="/index.html">Olivier Dolbeau</a></div>
+                <div id="site-description">Web Developer, Symfony2 fan, beer lover.</div>
+            </header>
+            <div id="content">
+                <article itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+        <h1 itemprop="name">La puissance des data providers de PHPUnit</h1>
+        <p class="meta">
+            by Olivier Dolbeau
+            on <time itemprop="datePublished" datetime="2011-08-08">
+                08 August 2011
+            </time>
+        </p>
+    </header>
+    <div itemprop="articleBody">
+        <p>A n&#8217;en pas douter, vous êtes très certainement de grands fans des <strong>tests unitaires</strong> et, pourquoi pas, de <a title='PHPUnit official repository' href='https://github.com/sebastianbergmann/phpunit/'>PHPUnit</a>.</p>
+
+<p>Si vous l&#8217;utilisez depuis un certain temps, cet article ne vous apprendra probablement rien (désolé! :P). Dans le cas contraire, vous devriez être heureux (en tout cas, moi, je l&#8217;étais! :D)</p>
+
+<p>Il y a de ça quelques semaines, je devait tester un service <strong>symfony2</strong> permettant de vérifier les droits d&#8217;un utilisateur sur une entité précise pour une action donnée. Inutile de préciser que l&#8217;éventail des possibilités était large! :D</p>
+
+<p>Si comme moi, une subite envie de fuire vous prends à l&#8217;idée de devoir écrire tous ces tests à la main, restez! Et admirez:</p>
+
+<p><strong>SANS</strong> les datas providers:</p>
+<div class='highlight'><pre><code class='php'><span class='cp'>&lt;?php</span>
+<span class='k'>class</span> <span class='nc'>MonTestCase</span> <span class='k'>extends</span> <span class='nx'>WebTestCase</span>
+<span class='p'>{</span>
+    <span class='k'>public</span> <span class='k'>function</span> <span class='nf'>testRightsForCreateBusinessWithAdmin</span><span class='p'>()</span> <span class='p'>{</span> <span class='o'>...</span> <span class='p'>}</span>
+    <span class='k'>public</span> <span class='k'>function</span> <span class='nf'>testRightsForUpdateBusinessWithAdmin</span><span class='p'>()</span> <span class='p'>{</span> <span class='o'>...</span> <span class='p'>}</span>
+    <span class='k'>public</span> <span class='k'>function</span> <span class='nf'>testRightsForDeleteBusinessWithAdmin</span><span class='p'>()</span> <span class='p'>{</span> <span class='o'>...</span> <span class='p'>}</span>
+<span class='p'>}</span>
+</code></pre></div>
+<p>Nous sommes ici obligés d&#8217;écrire chacun de nos tests un par un&#8230;</p>
+
+<p><strong>AVEC</strong> les datas providers:</p>
+<div class='highlight'><pre><code class='php'><span class='cp'>&lt;?php</span>
+<span class='k'>class</span> <span class='nc'>MonTestCase</span> <span class='k'>extends</span> <span class='nx'>WebTestCase</span>
+<span class='p'>{</span>
+    <span class='k'>public</span> <span class='k'>static</span> <span class='k'>function</span> <span class='nf'>providerRights</span><span class='p'>()</span>
+    <span class='p'>{</span>
+        <span class='k'>return</span> <span class='k'>array</span><span class='p'>(</span>
+            <span class='k'>array</span><span class='p'>(</span><span class='s1'>&#39;create&#39;</span><span class='p'>,</span> <span class='s1'>&#39;business&#39;</span><span class='p'>,</span> <span class='s1'>&#39;admin&#39;</span><span class='p'>),</span>
+            <span class='k'>array</span><span class='p'>(</span><span class='s1'>&#39;update&#39;</span><span class='p'>,</span> <span class='s1'>&#39;business&#39;</span><span class='p'>,</span> <span class='s1'>&#39;admin&#39;</span><span class='p'>),</span>
+            <span class='k'>array</span><span class='p'>(</span><span class='s1'>&#39;delete&#39;</span><span class='p'>,</span> <span class='s1'>&#39;business&#39;</span><span class='p'>,</span> <span class='s1'>&#39;admin&#39;</span><span class='p'>),</span>
+        <span class='p'>);</span>
+    <span class='p'>}</span>
+
+    <span class='sd'>/**</span>
+<span class='sd'>    * @dataProvider providerRights</span>
+<span class='sd'>    */</span>
+    <span class='k'>public</span> <span class='k'>function</span> <span class='nf'>testRightsOK</span><span class='p'>(</span><span class='nv'>$action</span><span class='p'>,</span> <span class='nv'>$entity</span><span class='p'>,</span> <span class='nv'>$role</span><span class='p'>)</span> <span class='p'>{</span> <span class='o'>...</span> <span class='p'>}</span>
+<span class='p'>}</span>
+</code></pre></div>
+<p>Cette fois, <strong>LE</strong> test (oui, il n&#8217;y en a plus qu&#8217;un! \o/) attends certains <strong>paramètres</strong> qui lui sont fournis par le <strong>data provider</strong> déclaré juste au dessus. Ce comportement est spécifié à PHPUnit via l&#8217;utilisation d&#8217;une <strong>annotation</strong> toute simple.</p>
+
+<p>De cette manière, le même test sera lancé pour chacune des données renvoyées par notre data provider! :)</p>
+
+<p>Fantastique non?</p>
+
+<p>Moins de code, moins de bugs, moins de maintenance, plus de lisibilité. Bref, que des avantages! :D Si vous voulez plus d&#8217;informations sur les data providers, n&#8217;hésitez pas à consulter l&#8217;excellente documentation de PHUnit <a title='Documentation de PHPUnit: les data providers' href='http://www.phpunit.de/manual/3.5/en/writing-tests-for-phpunit.html#writing-tests-for-phpunit.data-providers'>ici</a>!</p>
+
+<p>(Et encore une fois, merci <a title='@futurecat' href='http://twitter.com/#!/futurecat'>@futurecat</a>! :))</p>
+    </div>
+
+    </article>
+
+
+    <div id="related-posts">
+        <span class="underline">Related posts:</span>
+        <ul>
+            
+                <li><a href="/blog/symfony2-cache-warmer.html">Symfony2 cache warmer</a></li>
+            
+                <li><a href="/blog/use-virtuals-forms-with-symfony2.html">Use virtuals forms with Symfony2</a></li>
+            
+                <li><a href="/blog/utiliser-les-forms-virtuals-avec-symfony2.html">Utiliser les forms virtuals avec Symfony2</a></li>
+            
+        </ul>
+    </div>
+
+
+<div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    var disqus_shortname = 'odolbeau'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+            </div>
+            <div id="footer">
+                <div id="col-left">
+                    <a rel="license" href="http://creativecommons.org/licenses/by-nc/2.0/fr/">
+                        <img alt="Licence Creative Commons" src="http://i.creativecommons.org/l/by-nc/2.0/fr/80x15.png" width="80" height="15" />
+                    </a>
+                </div>
+                <div id="col-right">
+                    <p>Powered by <a href="http://jekyllrb.com/" title="Jekyll official website">Jekyll</a></p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <title>Admin generator: Objet ayant un string en primary key</title>
+
+        <meta name="author" content="Olivier Dolbeau" />
+        <meta name="description" content="Admin generator: Objet ayant un string en primary key - Olivier Dolbeau" />
+        <meta name="keywords" content="olivier, dolbeau, blog, Symfony2" />
+
+        <link rel="stylesheet" type="text/css" href="/assets/css/base.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="/assets/css/pygments.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="/assets/css/alerts.css" media="all" />
+
+        <!-- Allow html5 elements to be style properly for IE v8 and before -->
+        <!--[if lt IE9]><script src="/js/html5-ie.js"></script><![endif]-->
+
+        
+            <link rel="alternate" type="application/rss+xml" href="http://feeds.feedburner.com/odolbeau" title="RSS Feed - Olivier Dolbeau">
+        
+
+        
+            <script type="text/javascript">
+                var _gaq = _gaq || [];
+                _gaq.push(['_setAccount', 'UA-10214242-1']);
+                _gaq.push(['_trackPageview']);
+                _gaq.push(['_trackPageLoadTime']);
+
+                (function() {
+                    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                })();
+            </script>
+        
+    </head>
+    <body>
+        
+            <a href="http://github.com/odolbeau/odolbeau.github.com"><img style="position: absolute; top: 0; right: 0; border: 0;" src="/assets/images/github.png" alt="Fork me on GitHub" /></a>
+        
+        <div id="wrapper">
+            <header role="banner">
+                <div id="site-title"><a href="/index.html">Olivier Dolbeau</a></div>
+                <div id="site-description">Web Developer, Symfony2 fan, beer lover.</div>
+            </header>
+            <div id="content">
+                <article itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+        <h1 itemprop="name">Admin generator: Objet ayant un string en primary key</h1>
+        <p class="meta">
+            by Olivier Dolbeau
+            on <time itemprop="datePublished" datetime="2010-10-18">
+                18 October 2010
+            </time>
+        </p>
+    </header>
+    <div itemprop="articleBody">
+        <p>Petite astuce pour ceux qui seraient amenés a utiliser autre chose un <strong>string</strong> comme <strong>clé primaire</strong> d&#8217;une table et qui voudrait tout de même utiliser l&#8217;<a title='admin generator' href='http://www.odolbeau.fr/tag/admin-generator'>admin generator</a> sans obtenir d&#8217;erreur&#8230;</p>
+
+<p>Il vous suffit simplement de modifier votre fichier routing.yml de manière à préciser la nature de la clé primaire attendue dans les requirements:</p>
+<div class='highlight'><pre><code class='yaml'><span class='l-Scalar-Plain'>annonce</span><span class='p-Indicator'>:</span>
+  <span class='l-Scalar-Plain'>class</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>sfPropelRouteCollection</span>
+  <span class='l-Scalar-Plain'>requirements</span><span class='p-Indicator'>:</span> <span class='p-Indicator'>{</span> <span class='nv'>id</span><span class='p-Indicator'>:</span> <span class='nv'>\w+</span> <span class='p-Indicator'>}</span>
+  <span class='l-Scalar-Plain'>options</span><span class='p-Indicator'>:</span>
+    <span class='l-Scalar-Plain'>model</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>Annonce</span>
+    <span class='l-Scalar-Plain'>module</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>annonce</span>
+    <span class='l-Scalar-Plain'>prefix_path</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>annonce</span>
+    <span class='l-Scalar-Plain'>column</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>id</span>
+    <span class='l-Scalar-Plain'>with_wildcard_routes</span><span class='p-Indicator'>:</span> <span class='l-Scalar-Plain'>true</span>
+</code></pre></div>
+<p>N&#8217;oubliez pas de changer le champ soumis à ce prérequis si celui-ci ne s&#8217;appelle pas &#8220;id&#8221; comme dans l&#8217;exemple! :)</p>
+
+<p>En espérant que ce <a title='snippet' href='http://www.odolbeau.fr/tag/snippet'>snippet </a>puisse vous servir! ;)</p>
+    </div>
+
+    </article>
+
+
+    <div id="related-posts">
+        <span class="underline">Related posts:</span>
+        <ul>
+            
+                <li><a href="/blog/symfony2-cache-warmer.html">Symfony2 cache warmer</a></li>
+            
+                <li><a href="/blog/use-virtuals-forms-with-symfony2.html">Use virtuals forms with Symfony2</a></li>
+            
+                <li><a href="/blog/utiliser-les-forms-virtuals-avec-symfony2.html">Utiliser les forms virtuals avec Symfony2</a></li>
+            
+        </ul>
+    </div>
+
+
+<div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    var disqus_shortname = 'odolbeau'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+            </div>
+            <div id="footer">
+                <div id="col-left">
+                    <a rel="license" href="http://creativecommons.org/licenses/by-nc/2.0/fr/">
+                        <img alt="Licence Creative Commons" src="http://i.creativecommons.org/l/by-nc/2.0/fr/80x15.png" width="80" height="15" />
+                    </a>
+                </div>
+                <div id="col-right">
+                    <p>Powered by <a href="http://jekyllrb.com/" title="Jekyll official website">Jekyll</a></p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

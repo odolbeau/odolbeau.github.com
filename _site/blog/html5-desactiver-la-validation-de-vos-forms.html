@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <title>HTML5: Désactiver la validation de vos forms</title>
+
+        <meta name="author" content="Olivier Dolbeau" />
+        <meta name="description" content="HTML5: Désactiver la validation de vos forms - Olivier Dolbeau" />
+        <meta name="keywords" content="olivier, dolbeau, blog, Symfony2" />
+
+        <link rel="stylesheet" type="text/css" href="/assets/css/base.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="/assets/css/pygments.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="/assets/css/alerts.css" media="all" />
+
+        <!-- Allow html5 elements to be style properly for IE v8 and before -->
+        <!--[if lt IE9]><script src="/js/html5-ie.js"></script><![endif]-->
+
+        
+            <link rel="alternate" type="application/rss+xml" href="http://feeds.feedburner.com/odolbeau" title="RSS Feed - Olivier Dolbeau">
+        
+
+        
+            <script type="text/javascript">
+                var _gaq = _gaq || [];
+                _gaq.push(['_setAccount', 'UA-10214242-1']);
+                _gaq.push(['_trackPageview']);
+                _gaq.push(['_trackPageLoadTime']);
+
+                (function() {
+                    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                })();
+            </script>
+        
+    </head>
+    <body>
+        
+            <a href="http://github.com/odolbeau/odolbeau.github.com"><img style="position: absolute; top: 0; right: 0; border: 0;" src="/assets/images/github.png" alt="Fork me on GitHub" /></a>
+        
+        <div id="wrapper">
+            <header role="banner">
+                <div id="site-title"><a href="/index.html">Olivier Dolbeau</a></div>
+                <div id="site-description">Web Developer, Symfony2 fan, beer lover.</div>
+            </header>
+            <div id="content">
+                <article itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+        <h1 itemprop="name">HTML5: Désactiver la validation de vos forms</h1>
+        <p class="meta">
+            by Olivier Dolbeau
+            on <time itemprop="datePublished" datetime="2011-08-07">
+                07 August 2011
+            </time>
+        </p>
+    </header>
+    <div itemprop="articleBody">
+        <p>Comme vous le savez certainement, les navigateurs récents vous offrent la possibilité de valider vos champs de formulaires pour peu que vous utilisiez <a href='http://www.w3.org/TR/html5/forms.html#forms'>les nouvelles directives HTML5</a> dédiées à la validation.</p>
+
+<p>Ces nouveaux attributs vous permettent d&#8217;avoir une validation côté client. Votre formulaire ne sera donc pas envoyé si des erreurs sont détectées par le navigateur. Difficile de tester vos messages d&#8217;erreurs dans ces conditions!</p>
+
+<p>Heureusement, ces nouveaux attributs ont un maître! Il suffit d&#8217;un seul pour les dominer tous: <a href='http://www.w3.org/TR/html5/forms.html#the-form-element'>l'atribut **novalidate** de la balise form</a>!</p>
+
+<p>Avec lui, plus de validation côté client! Vous pouvez à nouveau tester vos formulaires et vos messages d&#8217;erreurs comme il se doit! (bien entendu, n&#8217;oubliez pas de l&#8217;enlever une fois vos tests terminés! \o/)</p>
+
+<p>Et on remercie tous <a href='http://twitter.com/#!/futurecat'>@futurecat</a> pour cette astuce tout bête qui nous sauve la vie! (c&#8217;était <a href='http://twitter.com/#!/futurecat/status/90066313304739840'>ici</a>)</p>
+    </div>
+
+    </article>
+
+
+    <div id="related-posts">
+        <span class="underline">Related posts:</span>
+        <ul>
+            
+                <li><a href="/blog/symfony2-cache-warmer.html">Symfony2 cache warmer</a></li>
+            
+                <li><a href="/blog/use-virtuals-forms-with-symfony2.html">Use virtuals forms with Symfony2</a></li>
+            
+                <li><a href="/blog/utiliser-les-forms-virtuals-avec-symfony2.html">Utiliser les forms virtuals avec Symfony2</a></li>
+            
+        </ul>
+    </div>
+
+
+<div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    var disqus_shortname = 'odolbeau'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+            </div>
+            <div id="footer">
+                <div id="col-left">
+                    <a rel="license" href="http://creativecommons.org/licenses/by-nc/2.0/fr/">
+                        <img alt="Licence Creative Commons" src="http://i.creativecommons.org/l/by-nc/2.0/fr/80x15.png" width="80" height="15" />
+                    </a>
+                </div>
+                <div id="col-right">
+                    <p>Powered by <a href="http://jekyllrb.com/" title="Jekyll official website">Jekyll</a></p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

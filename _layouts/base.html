@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <title>{{ page.title }}</title>
+
+        <meta name="author" content="{{ site.author }}" />
+        <meta name="description" content="{{ page.description }} - {{ site.author }}" />
+        <meta name="keywords" content="olivier, dolbeau, blog, Symfony2" />
+
+        <link rel="stylesheet" type="text/css" href="/assets/css/base.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="/assets/css/pygments.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="/assets/css/alerts.css" media="all" />
+
+        <!-- Allow html5 elements to be style properly for IE v8 and before -->
+        <!--[if lt IE9]><script src="/js/html5-ie.js"></script><![endif]-->
+
+        {% if site.feedburner %}
+            <link rel="alternate" type="application/rss+xml" href="http://feeds.feedburner.com/{{ site.feedburner.id }}" title="RSS Feed - {{ site.author }}">
+        {% endif %}
+
+        {% if site.google_analytics %}
+            <script type="text/javascript">
+                var _gaq = _gaq || [];
+                _gaq.push(['_setAccount', '{{ site.google_analytics.account }}']);
+                _gaq.push(['_trackPageview']);
+                _gaq.push(['_trackPageLoadTime']);
+
+                (function() {
+                    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                })();
+            </script>
+        {% endif %}
+    </head>
+    <body>
+        {% if site.github %}
+            <a href="http://github.com/{{ site.github.username }}/{{ site.github.blog_repo }}"><img style="position: absolute; top: 0; right: 0; border: 0;" src="{{ '/assets/images/github.png' | asset_url }}" alt="Fork me on GitHub" /></a>
+        {% endif %}
+        <div id="wrapper">
+            <header role="banner">
+                <div id="site-title"><a href="/index.html">{{ site.title }}</a></div>
+                <div id="site-description">{{ site.description }}</div>
+            </header>
+            <div id="content">
+                {{ content }}
+            </div>
+            <div id="footer">
+                <div id="col-left">
+                    <a rel="license" href="http://creativecommons.org/licenses/by-nc/2.0/fr/">
+                        <img alt="Licence Creative Commons" src="http://i.creativecommons.org/l/by-nc/2.0/fr/80x15.png" width="80" height="15" />
+                    </a>
+                </div>
+                <div id="col-right">
+                    <p>Powered by <a href="http://jekyllrb.com/" title="Jekyll official website">Jekyll</a></p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

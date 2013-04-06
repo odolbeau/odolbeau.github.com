@@ -1,0 +1,17 @@
+pygments:   true
+permalink:  /blog/:title.html
+
+# Blog
+author: Olivier Dolbeau
+title: Olivier Dolbeau
+description: Web Developer, Symfony2 fan, beer lover.
+
+feedburner:
+    id: odolbeau
+
+github:
+    username: odolbeau
+    blog_repo: odolbeau.github.com
+
+google_analytics:
+    account: UA-10214242-1

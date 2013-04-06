@@ -1,0 +1,21 @@
+---
+layout: base
+---
+
+<h1>Posts</h1>
+
+<ul>
+    {% for post in site.posts %}
+        <li>
+            <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date_to_long_string }}</time> »
+            <a href="{{ post.url }}">{{ post.title }}</a>
+        </li>
+    {% endfor %}
+</ul>
+
+<h1>Talks</h1>
+<ul>
+    <li>
+        <a href="https://speakerdeck.com/odolbeau/retour-dexperience-sur-lutilisation-de-rabbitmq-chez-blablacar">[fr] Retour d'expérience sur l'utilisation de RabbitMQ chez BlaBlaCar</a> - sfPot Paris, 13 March 2013
+    </li>
+</ul>

@@ -1,0 +1,201 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <title>Installation de symfony sous windows</title>
+
+        <meta name="author" content="Olivier Dolbeau" />
+        <meta name="description" content="Installation de symfony sous windows - Olivier Dolbeau" />
+        <meta name="keywords" content="olivier, dolbeau, blog, Symfony2" />
+
+        <link rel="stylesheet" type="text/css" href="/assets/css/base.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="/assets/css/pygments.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="/assets/css/alerts.css" media="all" />
+
+        <!-- Allow html5 elements to be style properly for IE v8 and before -->
+        <!--[if lt IE9]><script src="/js/html5-ie.js"></script><![endif]-->
+
+        
+            <link rel="alternate" type="application/rss+xml" href="http://feeds.feedburner.com/odolbeau" title="RSS Feed - Olivier Dolbeau">
+        
+
+        
+            <script type="text/javascript">
+                var _gaq = _gaq || [];
+                _gaq.push(['_setAccount', 'UA-10214242-1']);
+                _gaq.push(['_trackPageview']);
+                _gaq.push(['_trackPageLoadTime']);
+
+                (function() {
+                    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                })();
+            </script>
+        
+    </head>
+    <body>
+        
+            <a href="http://github.com/odolbeau/odolbeau.github.com"><img style="position: absolute; top: 0; right: 0; border: 0;" src="/assets/images/github.png" alt="Fork me on GitHub" /></a>
+        
+        <div id="wrapper">
+            <header role="banner">
+                <div id="site-title"><a href="/index.html">Olivier Dolbeau</a></div>
+                <div id="site-description">Web Developer, Symfony2 fan, beer lover.</div>
+            </header>
+            <div id="content">
+                <article itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+        <h1 itemprop="name">Installation de symfony sous windows</h1>
+        <p class="meta">
+            by Olivier Dolbeau
+            on <time itemprop="datePublished" datetime="2009-08-12">
+                12 August 2009
+            </time>
+        </p>
+    </header>
+    <div itemprop="articleBody">
+        <p>Voici un petit tutoriel simple et rapide qui vous permettra de préparer votre environnement de travail puis d&#8217;installer symfony. Étapes nécessaires avant de pouvoir utiliser cet excellent framework! :)</p>
+
+<p>La procédure d&#8217;installation de symfony sur une architecture WAMP ne présente aucune difficulté particulière et peux aisément se réaliser en suivant les instructions de la <a title='Documentation officielle permettant d&apos;installer le framework symfony' href='http://www.symfony-project.org/book/1_2/03-Running-Symfony#chapter_03_installing_the_symfony_libraries'>documentation officielle</a> du framework symfony ou du <a title='Premier chapitre du tutoriel Jobeet' href='http://www.symfony-project.org/jobeet/1_2/Propel/en/01#chapter_01_symfony_installation'>premier chapitre</a> de l&#8217;excellent tutoriel <a title='Tutoriel Jbeet' href='http://www.symfony-project.org/jobeet/1_2/'>Jobeet</a>.</p>
+
+<p>Cependant, pour celles et ceux que l&#8217;anglais horripile ou qui préfèrent suivre des explications adaptées à leur plateforme, voici les étapes à suivre pour installer le framework symfony.</p>
+
+<p>Seul prérequis avant de démarrer l&#8217;installation, assurez-vous d&#8217;avoir une version de <a title='Site officiel de WampServer' href='http://www.wampserver.com/'>WampServer</a> à jour.</p>
+
+<h2 id='premire_tape_installation_de_pear'>Première étape: Installation de PEAR</h2>
+
+<p>Définition de <a title='Définition de PEAR sur Wikipedia' href='http://fr.wikipedia.org/wiki/PEAR'>Wikipedia</a> pour <a title='Site officiel de PEAR' href='http://pear.php.net/'>PEAR</a>:</p>
+
+<blockquote>
+<p><em>PEAR</em> (pour <em>PHP Extension and Application Repository</em>) est une collection de bibliothèques PHP. C&#8217;est aussi une application qui permet de gérer les bibliothèques (installer ou mettre à jour une bibliothèque).</p>
+</blockquote>
+
+<p>PEAR va permettre d&#8217;installer symfony (<a title='Liste des packaches PEAR disponibles' href='http://pear.php.net/packages.php'>ainsi que de nombreux autres packages</a>) grâce à une simple ligne de commande.</p>
+
+<p><em>MAJ: La manipulation permettant d&#8217;installer PEAR dépend maintenant de votre version de WampServer (merci à <a href='http://www.odolbeau.fr/installation-de-symfony-sous-windows/comment-page-1#comment-12'>LeoSquall</a> pour la remarque!)</em></p>
+
+<ul>
+<li>
+<p><strong>Version 2.0h ou inférieure:</strong></p>
+
+<p>Pour installer PEAR, lancez <code>go-pear.bat</code> situé dans le dossier <code>bin/php/php5.x.x</code> de votre répertoire d&#8217;installation de WampServer en utilisant l&#8217;invite de commande.</p>
+
+<p>Ce qui donne dans mon cas:</p>
+</li>
+</ul>
+<div class='highlight'><pre><code class='bash'>    <span class='nb'>cd </span>C:<span class='se'>\A</span>PPS<span class='se'>\W</span>ampServer<span class='se'>\b</span>in<span class='se'>\p</span>hp<span class='se'>\p</span>hp5.2.6
+    go-pear.bat
+    
+</code></pre></div>
+<ul>
+<li>
+<p><strong>Version 2.0i ou supérieure:</strong></p>
+
+<p>Créez un fichier <code>script.bat</code> dans le dossier <code>bin/php/php5.x.x</code> de votre répertoire d&#8217;installation de WampServer puis copiez-y le code suivant:</p>
+</li>
+</ul>
+<div class='highlight'><pre><code class='bash'>    php -d phar.require_hash<span class='o'>=</span>0 PEAR<span class='se'>\g</span>o-pear.phar
+    
+</code></pre></div>
+<pre><code>Exécutez le script en double cliquant dessus ou via l&#39;invite de commande</code></pre>
+
+<p><em>MAJ: Vous pouvez continuer de suivre ce tutorial, quelque soit votre version de WampServer! :)</em></p>
+<div class='img-container-medium alignright'>
+    <img title='Modification de la variable Path' src='images/posts/2009-08-12/variables-environnement.jpg' height='270' width='235' alt='Modification de la variable Path' />
+    <p class='legend'>Modification de la variable Path</p>
+</div>
+<p>Au cours de l&#8217;installation, contentez-vous d&#8217;appuyez sur Entrée à chaque nouvelle demande et de répondre par l&#8217;affirmative lorsque que le script vous demandera si vous souhaitez qu&#8217;il modifie votre fichier php.ini (_Would you like to alter php.ini ?_).</p>
+
+<p>Maintenant que PEAR est installé, il ne reste plus qu&#8217;à s&#8217;en servir! :) Pour cela il va falloir rajouter une nouvelle variable système. Rien de plus simple: Clic droit sur le poste de travail -&gt; Propriétés -&gt; Onglet &#8220;Avancé&#8221; -&gt; Variables système.</p>
+
+<p>Modifiez à présent la variable Path en ajoutant simplement à la fin de la chaine l&#8217;adresse du dossier utilisé auparavant (celui dans lequel se situe le script go-pear.bat) précédé d&#8217;un point virgule. Dans mon cas: <code>; C:\APPS\WampServer\bin\php\php5.2.6</code></p>
+
+<p>Fermer l&#8217;invite de commande puis ré-ouvrez la afin que les modifications soient prises en compte.</p>
+
+<p>Voilà, PEAR est installé et fonctionnel!</p>
+
+<h2 id='deuxime_tape_installation_de_symfony'>Deuxième étape: Installation de symfony</h2>
+
+<p>Comme expliqué ci-dessus, PEAR va maintenant nous permettre d&#8217;installer symfony grâce à une simple ligne de commande! Ou plutôt deux! La première va permettre d&#8217;enregistrer un nouveau <a title='Liste des channels PEAR' href='http://pear.php.net/channels/'>channel</a> contenant une liste de packages. Une fois ce channel ajouté, il suffit d&#8217;installer le package de son choix, en l&#8217;occurrence, la dernière version stable de symfony. Voici les commandes:</p>
+<div class='highlight'><pre><code class='bash'>pear channel-discover pear.symfony-project.com
+</code></pre></div>
+<p>puis</p>
+<div class='highlight'><pre><code class='bash'>pear install symfony/symfony
+</code></pre></div>
+<p>A présent que symfony est installé, reste à mettre en place un minimum de configuration.</p>
+
+<h2 id='troisime_tape_configuration'>Troisième étape: Configuration</h2>
+
+<p>Afin de faire fonctionner symfony, il faut vérifier et éventuellement modifier votre configuration de php et d&#8217;<a title='Site officiel d&apos;apache' href='http://www.apache.org/'>apache</a>.</p>
+
+<h3 id='modification_de_la_configuration_de_php'>Modification de la configuration de php</h3>
+
+<p>Tout d&#8217;abord, ouvrez le fichier <code>php.ini</code> situé dans le même dossier qu&#8217;auparavant. Si vous utilisez WampServer, une fois celui-ci démarré, vous pouvez accéder rapidement au fichier en cliquant (gauche) sur l&#8217;icône de WampServer dans la barre des taches, puis PHP -&gt; php.ini.</p>
+
+<p>Dans ce fichier, deux choses à vérifier. Rechercher <code>memory_limit</code> et vérifier que la valeur est supérieure ou égale à 16M (<code>memory_limit = 16M</code>).</p>
+
+<p>Enfin, si vous utilisez une version inférieure à PHP 5.3, vérifier que les <a title='Présentation des magic quotes sur le site php.net' href='http://fr2.php.net/magic_quotes'>magic quotes</a> (guillemets magiques) sont désactivés (<code>magic_quotes_gpc = Off</code>)</p>
+
+<h3 id='modification_de_la_configuration_dapache'>Modification de la configuration d&#8217;apache</h3>
+
+<p>Ouvrez maintenant le fichier <code>httpd.conf</code> situé dans le dossier <code>bin/apache/apache2.x.x/conf</code> du répertoire d&#8217;installation de WampServer ou encore une fois, accédez-y via l&#8217;icône de WampServer situé dans la barre des tâches (Apache -&gt; httpd.conf)</p>
+
+<p>Vérifiez que le module apache de rewriting, <a title='Documentation officiel d&apos;apache: l&apos;extension mod_rewrite' href='http://httpd.apache.org/docs/1.3/mod/mod_rewrite.html'>rewrite_module</a> est bien activé (pas de # devant la ligne: <code>LoadModule rewrite_module modules/mod_rewrite.so</code>)</p>
+
+<p>N&#8217;oubliez pas de redémarrer le serveur apache afin que les modifications soient prises en compte!</p>
+
+<p>Dernière étape, nous devons permettre au serveur apache d&#8217;accéder aux images, feuilles de styles et fichier javascript fournis par symfony et utilisé notamment par l&#8217;admin generator, les pages par défaut et la barre de debug.</p>
+
+<p>La solution la plus optimale est d&#8217;utiliser un <a title='Documentation officielle d&apos;apache: le module alias' href='http://httpd.apache.org/docs/2.2/mod/mod_alias.html'>alias</a> apache (plus ou moins l&#8217;équivalent d&#8217;un <a title='Définition d&apos;un lien symbolique sur Wikipedia' href='http://fr.wikipedia.org/wiki/Lien_symbolique'>lien symbolique</a> sous unix). Cependant, cette solution dépendant notamment de votre configuration apache existante et de l&#8217;utilisation que vous faites de votre serveur (multi-sites, etc) je ne la détaillerai pas dans cet article. Vous trouverez néanmoins un nombre important d&#8217;informations dans la <a title='Documentation officielle de symfony: configurer le serveur web' href='http://www.symfony-project.org/book/1_2/03-Running-Symfony#chapter_03_configuring_the_web_server'>documentation officielle de symfony</a> ou dans celle d&#8217;<a title='Documentation officielle d&apos;apache: l&apos;extension mod_alias' href='http://httpd.apache.org/docs/2.2/mod/mod_alias.html'>apache</a>.</p>
+
+<p>Nous allons donc nous contenter d&#8217;utiliser la seconde solution. Pour cela, commencez par créer votre projet symfony en suivant les instructions de la <a title='Documentation officielle de symfony: mettre en oeuvre une application' href='http://www.symfony-project.org/book/1_2/03-Running-Symfony#chapter_03_setting_up_an_application'>documentation</a>, puis copiez/collez l&#8217;ensemble des fichiers situés dans le dossier <code>bin/php/php5.2.6/data/symfony/web/sf</code> du répertoire d&#8217;installation de WampServer dans le répertoire web/sf de votre projet symfony. Cette solution fonctionne parfaitement, néanmoins vous serez obligé de refaire cette manipulation pour chaque projet que vous réaliserez sur votre machine mais également à chaque nouvelle version de symfony que vous utiliserez par la suite.</p>
+    </div>
+
+    </article>
+
+
+    <div id="related-posts">
+        <span class="underline">Related posts:</span>
+        <ul>
+            
+                <li><a href="/blog/symfony2-cache-warmer.html">Symfony2 cache warmer</a></li>
+            
+                <li><a href="/blog/use-virtuals-forms-with-symfony2.html">Use virtuals forms with Symfony2</a></li>
+            
+                <li><a href="/blog/utiliser-les-forms-virtuals-avec-symfony2.html">Utiliser les forms virtuals avec Symfony2</a></li>
+            
+        </ul>
+    </div>
+
+
+<div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    var disqus_shortname = 'odolbeau'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+            </div>
+            <div id="footer">
+                <div id="col-left">
+                    <a rel="license" href="http://creativecommons.org/licenses/by-nc/2.0/fr/">
+                        <img alt="Licence Creative Commons" src="http://i.creativecommons.org/l/by-nc/2.0/fr/80x15.png" width="80" height="15" />
+                    </a>
+                </div>
+                <div id="col-right">
+                    <p>Powered by <a href="http://jekyllrb.com/" title="Jekyll official website">Jekyll</a></p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

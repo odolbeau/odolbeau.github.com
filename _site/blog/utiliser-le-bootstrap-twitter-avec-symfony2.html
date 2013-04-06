@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <title>Utiliser le bootstrap twitter avec symfony2</title>
+
+        <meta name="author" content="Olivier Dolbeau" />
+        <meta name="description" content="Utiliser le bootstrap twitter avec symfony2 - Olivier Dolbeau" />
+        <meta name="keywords" content="olivier, dolbeau, blog, Symfony2" />
+
+        <link rel="stylesheet" type="text/css" href="/assets/css/base.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="/assets/css/pygments.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="/assets/css/alerts.css" media="all" />
+
+        <!-- Allow html5 elements to be style properly for IE v8 and before -->
+        <!--[if lt IE9]><script src="/js/html5-ie.js"></script><![endif]-->
+
+        
+            <link rel="alternate" type="application/rss+xml" href="http://feeds.feedburner.com/odolbeau" title="RSS Feed - Olivier Dolbeau">
+        
+
+        
+            <script type="text/javascript">
+                var _gaq = _gaq || [];
+                _gaq.push(['_setAccount', 'UA-10214242-1']);
+                _gaq.push(['_trackPageview']);
+                _gaq.push(['_trackPageLoadTime']);
+
+                (function() {
+                    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                })();
+            </script>
+        
+    </head>
+    <body>
+        
+            <a href="http://github.com/odolbeau/odolbeau.github.com"><img style="position: absolute; top: 0; right: 0; border: 0;" src="/assets/images/github.png" alt="Fork me on GitHub" /></a>
+        
+        <div id="wrapper">
+            <header role="banner">
+                <div id="site-title"><a href="/index.html">Olivier Dolbeau</a></div>
+                <div id="site-description">Web Developer, Symfony2 fan, beer lover.</div>
+            </header>
+            <div id="content">
+                <article itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+        <h1 itemprop="name">Utiliser le bootstrap twitter avec symfony2</h1>
+        <p class="meta">
+            by Olivier Dolbeau
+            on <time itemprop="datePublished" datetime="2011-11-11">
+                11 November 2011
+            </time>
+        </p>
+    </header>
+    <div itemprop="articleBody">
+        <p>Je me l&#8217;étais promis depuis longtemps, je l&#8217;ai enfin fait! Tester un minimum <a alt='Site officiel de Less' href='http://lesscss.org/'>Less</a> avec <a alt='Repo d&apos;Assetic sur github.' href='https://github.com/kriswallsmith/assetic'>Assetic</a> (tant qu&#8217;à faire!).</p>
+
+<p>Et histoire de jeter un petit coup d&#8217;oeil sur cet outil magnifique, autant le faire dans les meilleurs conditions. Pour ça, merci twitter et son <a alt='Page officielle du bootstrap twitter' href='http://twitter.github.com/bootstrap/'>bootstrap</a>, qui utilise lui aussi Less (avec <a alt='Site officiel de Preboot.less' href='http://markdotto.com/bootstrap/'>Preboot.less</a> pour être plus précis).</p>
+
+<p>Première chose à faire, installer less et configurer Assetic dans votre projet sf2. Pour ce faire, vous pouvez suivre l&#8217;<a alt='Tutoriel d&apos;installation d&apos;Assetic, less et yui compressor pour Symfony2' href='http://www.funstaff.ch/2011/08/22/symfony2-assetic-less-et-yui-compressor-installation-sur-mac'>excellent tuto de Bertrand Zuchuat</a> (qui s&#8217;adresse avant tout aux possesseurs de Mac, mais vous devriez pouvoir le suivre sans trop d&#8217;adaptations quelque soit votre OS).</p>
+
+<p>Une fois fait, il ne vous reste plus qu&#8217;à utiliser le bootstrap twitter.</p>
+
+<p>Ce que devrait être rapide puisque <a alt='Profile de phiamo sur bundles.knplabs.org' href='http://bundles.knplabs.org/fr/phiamo/profil'>phiamo</a> et <a alt='Profil de hidenorigoto sur bundles.knplabs.org' href='http://bundles.knplabs.org/fr/hidenorigoto/profil'>hidenorigoto</a> ont déjà fait tout le travail pour vous avec le <a alt='MopaBootstrapBundle' href='http://bundles.knplabs.org/fr/phiamo/MopaBootstrapBundle'>MopaBootstrapBundle</a>.</p>
+
+<p>Il ne vous reste donc qu&#8217;à installer ce bundle en suivant les instructions d&#8217;installation et vous pourrez ainsi tirer pleinement profit du bootstrap twitter (y compris dans vos formulaires puisque le style par défaut a été revu et travaillé pour l&#8217;occasion!)</p>
+    </div>
+
+    </article>
+
+
+    <div id="related-posts">
+        <span class="underline">Related posts:</span>
+        <ul>
+            
+                <li><a href="/blog/symfony2-cache-warmer.html">Symfony2 cache warmer</a></li>
+            
+                <li><a href="/blog/use-virtuals-forms-with-symfony2.html">Use virtuals forms with Symfony2</a></li>
+            
+                <li><a href="/blog/utiliser-les-forms-virtuals-avec-symfony2.html">Utiliser les forms virtuals avec Symfony2</a></li>
+            
+        </ul>
+    </div>
+
+
+<div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    var disqus_shortname = 'odolbeau'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+            </div>
+            <div id="footer">
+                <div id="col-left">
+                    <a rel="license" href="http://creativecommons.org/licenses/by-nc/2.0/fr/">
+                        <img alt="Licence Creative Commons" src="http://i.creativecommons.org/l/by-nc/2.0/fr/80x15.png" width="80" height="15" />
+                    </a>
+                </div>
+                <div id="col-right">
+                    <p>Powered by <a href="http://jekyllrb.com/" title="Jekyll official website">Jekyll</a></p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
