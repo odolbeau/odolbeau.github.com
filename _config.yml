@@ -2,7 +2,9 @@ pygments:   true
 permalink:  /blog/:title.html
 
 # Blog
-author: Olivier Dolbeau
+author:
+    name: Olivier Dolbeau
+    email: odolbeau@gmail.com
 title: Olivier Dolbeau
 description: Web Developer, Symfony2 fan, beer lover.
 
@@ -15,3 +17,6 @@ github:
 
 google_analytics:
     account: UA-10214242-1
+
+rss:
+    title: Olivier Dolbeau
