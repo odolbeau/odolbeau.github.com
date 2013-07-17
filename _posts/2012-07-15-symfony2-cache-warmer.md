@@ -38,7 +38,7 @@ class MyCustomeCacheWarmer implements CacheWarmerInterface
         // Write in it
     }
 
-    public function isOptionnal()
+    public function isOptional()
     {
         // By default, all CacheWarmer are called by the `app/console cache:warmup` command.
         // But you can specify the `--no-optional-warmers` to skip non optional ones.
