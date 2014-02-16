@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Symfony2 cache warmer"
+description: Use Symfony2 cache warmers
 tags: [symfony2, cache, file, cachewarmer]
 ---
 
