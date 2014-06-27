@@ -22,3 +22,5 @@ google_analytics:
 
 rss:
     title: Olivier Dolbeau
+
+markdown: kramdown
