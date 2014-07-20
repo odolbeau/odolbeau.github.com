@@ -1,6 +1,6 @@
-safe:       true
-lsi:        false
-pygments:   true
+safe: true
+lsi: false
+highlighter: pygments
 permalink:  /blog/:title.html
 markdown: kramdown
 
