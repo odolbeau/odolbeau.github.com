@@ -47,12 +47,6 @@ p.meta {
     font: normal 0.7em "Trebuchet MS", Tahoma, sans-serif;
     color: #868686;
 }
-blockquote {
-    background: url(/images/theme/blockquote.png) no-repeat 0 12px;
-    margin: 0;
-    padding: 10px 20px 10px 50px;
-    color: #444;
-}
 
 /* Images */
 div.img-container-small, div.img-container-medium, div.img-container-large, div.img-container-full {
