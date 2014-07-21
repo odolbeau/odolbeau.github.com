@@ -13,9 +13,14 @@ layout: base
     </header>
     <div itemprop="articleBody">
         {{ content }}
-    </div>
 
-    </article>
+        <p>
+            <em class="fork-and-edit">
+                Found a typo ? <a href="http://github.com/odolbeau/odolbeau.github.com/edit/master/_posts/{{ page.date | date: "%Y-%m-%d" }}-{{ page.title | remove: " -" | replace: " ", "-" | downcase }}.md">Fork and edit this post</a> would be really great. :D Thanks in advance !
+            </em>
+        </p>
+    </div>
+</article>
 
 {% if site.related_posts != empty %}
     <div id="related-posts">
