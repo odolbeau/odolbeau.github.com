@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "When Monolog meet ELK"
+title: "When Monolog meets ELK"
 description: How to use Monolog to send all application logs to an ELK stack
 tags: [symfony2, monolog, elk, elasticsearch, logstash, kibana, log]
 ---
