@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "When Monolog meets ELK"
+title: "When Monolog meet ELK"
 description: How to use Monolog to send all application logs to an ELK stack
 tags: [symfony2, monolog, elk, elasticsearch, logstash, kibana, log]
 ---
 
-For this first article since 2 years (I know, it was long, did I miss you ? :D)
+For this first article since 2 years (I know, it was long, did you miss me ? :D)
 I'm going to talk about Monolog, Gelf and ELK. It's just a quick introduction
 but you will find a lot of resources in this article.
 
@@ -20,17 +20,17 @@ you're not familiar with channels, handlers and processors. In 2 words, channel
 is the name of the logger, handlers are its outputs and processors are here to
 add extra information in your logs.
 
-As we will see at the end of this article, you can make really interresting
+As we will see at the end of this article, you can make really interesting
 filters with your channels and the extra data added by your processors.
 
 ## Gelf
 
 [Gelf](http://graylog2.org/gelf) means Graylog Extended Log Format. This new
-format have been created by Graylog to avoid all syslog inconvenients like the
+format has been created by Graylog to avoid all syslog inconvenients like the
 length limit and the lack of data types and compression.
 
 Gelf messages can be sent by UDP (fortunately !) and of course, the awesome
-Monolog provide a
+Monolog provides a
 [GelfHandler](https://github.com/Seldaek/monolog/blob/master/src/Monolog/Handler/GelfHandler.php).
 
 Here is an example of a gelf message (can be found [in the
@@ -50,8 +50,8 @@ specs](http://graylog2.org/gelf#specs)) :
 }
 {% endhighlight %}
 
-As describe in the specs, some informations are mandatory (but don't worry
-about it, just let Monolog deal with it) and you can add as many informations
+As described in the specs, some information are mandatory (but don't worry
+about it, just let Monolog deal with it) and you can add as many information
 as you wish.
 
 ## ELK
@@ -62,13 +62,13 @@ ELK is an acronym for [ElasticSearch](http://www.elasticsearch.org/) /
 
 ### ElasticSearch
 
-ElasticSearch is a very powerful distributed search engine which use a RESTful
+ElasticSearch is a very powerful distributed search engine which provides a RESTful
 API. In the ELK stack, ElasticSearch is the storage backend. All our logs will
 be stored insite an index.
 
 ### Logstash
 
-Logstash have been created to manage logs. It collect, parse and store them.
+Logstash has been created to manage logs. It collects, parses and stores them.
 There is a lot of existing inputs (41), filters (50) and outputs (55). For
 example, look at this configuration file :
 
@@ -88,33 +88,33 @@ output {
 {% endhighlight %}
 
 We have configured a single input which is gelf. As we saw it, by default, gelf
-logs are sent in UDP on port 12201a nd of course, logstash know it.
+logs are sent through UDP on port 12201 and of course, logstash knows it.
 
 There is no filter in this configuraton as we don't really need it for this
-example. By the way, the gelf message will be directly sent to elasticsearch.
+example. By the way, the gelf message will be directly sent to ElasticSearch.
 
 And finally, there is an elasticsearch_http output. So, logstash will call the
-ElasticSearch API to insert logs into a generated index per day.
+ElasticSearch API to insert logs into an index, generated per day.
 
 You can take a look at the full documentation for the [gelf
 input](http://logstash.net/docs/1.4.2/inputs/gelf) and the [elasticsearch_http
 output](http://logstash.net/docs/1.4.2/outputs/elasticsearch_http) to have more
-informations.
+information.
 
 ### Kibana
 
 Kibana is a very powerful tool to see and interact with your data. It's very
 easy to use and you can create a lot of dashboards to visualize all your logs.
 Take a look at the [project
-homepage](http://www.elasticsearch.org/overview/kibana/) to see some example.
+homepage](http://www.elasticsearch.org/overview/kibana/) to see some examples.
 
 ## Tips
 
 ### Create dashboards for everything !
 
 Is there a particular error in your production environment ? Create a dashboard
-just for it ! You will have all available informations in the same place, it
-will be easier to aggregate informations and understand when it's occurred.
+just for it ! You will have all available information in a single place, it
+will be easier to aggregate information and understand when the error occurred.
 
 ### Context is your friend bro !
 
@@ -123,12 +123,12 @@ Of course, you all know
 which defined a standard `PSR\Log\LoggerInterface` (used by Monolog obviously).
 But did you read the ["Context"
 section](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-3-logger-interface.md#13-context)
-? Did you notice that all methods defined in the interface take an `$context`
-array as second argument ? Do you use it ? No ? You have to !
+? Did you notice that all methods defined in the interface take a `$context`
+array as second argument ? Do you use it ? No ? You should !
 
 This context is the best way to provide more information with your log. You can
-easily add all needed informations to know WHEN an error (for example)
+easily add all needed information to know WHEN an error (for example)
 occurred. And once you send all this context to the ELK stack, you can easily
-filter your logs according to the context. Does this error occurred every time
-with the same user ? is it only when this particular entity ? Anyway, just add
+filter your logs according to the context. Does this error occur every time
+with the same user ? Is it only with this particular entity ? Anyway, just add
 context and you will be able to group your logs according to it. :)
