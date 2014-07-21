@@ -123,7 +123,7 @@ Of course, you all know
 which defined a standard `PSR\Log\LoggerInterface` (used by Monolog obviously).
 But did you read the ["Context"
 section](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-3-logger-interface.md#13-context)
-? Did you notice thaht all methods defined in the interface take an `$context`
+? Did you notice that all methods defined in the interface take an `$context`
 array as second argument ? Do you use it ? No ? You have to !
 
 This context is the best way to provide more information with your log. You can
