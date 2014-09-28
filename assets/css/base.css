@@ -1,6 +1,6 @@
 /* Global */
 body {
-    font: 16px/1.5em Georgia,sans-serif;
+    font: 16px/1.5em "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;;
     color: #555;
     margin: 0;
     border-top: 4px solid #3C3C3C;
@@ -93,11 +93,12 @@ div.half-left p, div.half-right p {
 }
 
 /* Highlight */
-.highlight {
-    font: 0.7em/1.2em Georgia,sans-serif;
-    border: 1px solid #9F9F9F;
-    padding: 0 10px;
-    margin-bottom: 15px;
+p > code {
+    padding: 0.2em;
+    margin: 0;
+    border-radius: 3px;
+    background-color: rgba(0,0,0,0.04);
+    font-size: 85%;
 }
 
 /* Others */
