@@ -4,6 +4,8 @@ highlighter: pygments
 permalink:  /blog/:title.html
 markdown: kramdown
 
+url: http://odolbeau.fr
+
 # Blog
 author:
     name: Olivier Dolbeau
@@ -17,6 +19,9 @@ feedburner:
 github:
     username: odolbeau
     blog_repo: odolbeau.github.com
+
+twitter:
+    username: odolbeau
 
 google_analytics:
     account: UA-10214242-1

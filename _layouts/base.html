@@ -9,6 +9,15 @@
         <meta name="description" content="{{ page.description }} - {{ site.author.name }}" />
         <meta name="keywords" content="olivier, dolbeau, blog, Symfony2" />
 
+        <!-- Twitter cards -->
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:creator" content="@{{ site.twitter.username }}" />
+        <meta name="twitter:title" content="{{ page.title }}">
+        <meta name="twitter:url" content="{{ site.url }}{{ page.url }}">
+        <meta name="twitter:description" content="{{ page.description | truncate: 200 }}">
+
+        <meta name="keywords" content="olivier, dolbeau, blog, Symfony2" />
+
         <link rel="stylesheet" type="text/css" href="/assets/css/base.css" media="all" />
         <link rel="stylesheet" type="text/css" href="/assets/css/pygments.css" media="all" />
         <link rel="stylesheet" type="text/css" href="/assets/css/alerts.css" media="all" />
