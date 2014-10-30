@@ -55,7 +55,7 @@ Code [is
 here](https://github.com/odolbeau/php-amqp-bench/blob/master/src/Bab/Console/Command/PublishCommand.php)
 The concerned queue has been purged before each launch.
 
-    ./bench publish ext -m 1000000
+    ./bench publish [ext|lib] -m 1000000
 
 #### With the extension
 
@@ -79,12 +79,12 @@ The duration difference is pretty small between the extension and the library.
 In both case the memory consumption is very stable (I tried with 100, 1k, 10k,
 100k messages, the memory consumption is near the same).
 
-### Consume 100k messages from a queue (+ ack)
+### Get 100k messages from a queue (+ ack)
 
 Code [is
 here](https://github.com/odolbeau/php-amqp-bench/blob/master/src/Bab/Console/Command/GetCommand.php).
 
-    ./bench publish ext -m 1000000
+    ./bench get [ext|lib] -m 1000000
 
 #### With the extension
 
