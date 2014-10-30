@@ -14,7 +14,7 @@ speakerdeck](https://speakerdeck.com/odolbeau/making-asynchronous-tasks-in-php))
 
 During this talk we trolled about the
 [php-amqplib](https://github.com/videlalvaro/php-amqplib) created by [Alavaro
-Videla](old_sound) and maintained by [a lot of
+Videla](https://www.twitter.com/old_sound) and maintained by [a lot of
 users](https://github.com/videlalvaro/php-amqplib/graphs/contributors).
 
 This library is one of the 2 main ways to talk to an amqp broker. The other one
