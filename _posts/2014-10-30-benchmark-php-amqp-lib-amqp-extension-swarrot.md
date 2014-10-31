@@ -30,8 +30,8 @@ trolling is good but sometimes, having some real arguments is better.
 ## Environment
 
 * The broker used is [RabbitMQ](http://www.rabbitmq.com/) (v3.3.5).
-* I lunched tests on a Mac Book Pro (2,8 GHz Intel Core i7, 16 GB 1600 MHz DDR3
-  with OSX 10.10).
+* I launched tests on a Mac Book Pro (2,8 GHz Intel Core i7, 16 GB 1600 MHz
+  DDR3 with OSX 10.10).
 * I used PHP 5.6.2.
 * I used the last stable version for both the extension (1.4.0) and the library
   (2.4.1).
