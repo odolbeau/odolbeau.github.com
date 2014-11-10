@@ -15,7 +15,7 @@ we use ELK to make some marketing dashboards too (signups by country, payments
 and so on.) even if I said thaht I don't consider ELK as the best tool to do
 this.
 
-Last week Claude Duvernier ([@C_Duv](https://twitter.com/C_Duv)) asked me [on
+Last week Claude Duvergier ([@C_Duv](https://twitter.com/C_Duv)) asked me [on
 twitter](https://twitter.com/C_Duv/status/530869087531184129) which tool I
 would recommend instead of ELK. This make me think that in fact, ELK is not a
 bad choice, even if some others tools exist.
