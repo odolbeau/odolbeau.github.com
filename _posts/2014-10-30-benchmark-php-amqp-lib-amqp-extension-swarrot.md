@@ -18,7 +18,7 @@ Videla](https://www.twitter.com/old_sound) and maintained by [a lot of
 users](https://github.com/videlalvaro/php-amqplib/graphs/contributors).
 
 This library is one of the 2 main ways to talk to an amqp broker. The other one
-is the [php extension](git@github.com:pdezwart/php-amqp.git).
+is the [php extension](https://github.com/pdezwart/php-amqp).
 
 Anyway, the subject has come back a few days ago [on
 twitter](https://twitter.com/oscherler/status/524113790687010816) (conversation
