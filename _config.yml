@@ -6,6 +6,8 @@ markdown: kramdown
 
 url: http://odolbeau.fr
 
+exclude: [vendor]
+
 # Blog
 author:
     name: Olivier Dolbeau
