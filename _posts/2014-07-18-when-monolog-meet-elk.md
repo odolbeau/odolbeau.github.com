@@ -54,6 +54,21 @@ As described in the specs, some information are mandatory (but don't worry
 about it, just let Monolog deal with it) and you can add as many information
 as you wish.
 
+Here is a small example of a custom handler to log gelf messages in logstash:
+```yml
+#config_dev.yml
+monolog:
+    ...
+    handlers:
+        my_logstash_handler:
+            type: gelf
+            publisher:
+                hostname: %logstash_host%
+                port: %logstash_port%
+            formatter: monolog.formatter.gelf_message
+            level: INFO
+```
+
 ## ELK
 
 ELK is an acronym for [ElasticSearch](http://www.elasticsearch.org/) /
@@ -75,15 +90,14 @@ example, look at this configuration file :
 {% highlight json %}
 input {
     gelf {
-        type => gelf
+        codec => "json"
     }
 }
 
 output {
-  elasticsearch_http {
-    host => "http://mylogstash"
-    port => 9200
-  }
+    elasticsearch {
+        hosts => "elasticsearch:9200"
+    }
 }
 {% endhighlight %}
 
