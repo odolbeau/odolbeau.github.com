@@ -55,6 +55,7 @@ about it, just let Monolog deal with it) and you can add as many information
 as you wish.
 
 Here is a small example of a custom handler to log gelf messages in logstash:
+
 ```yml
 #config_dev.yml
 monolog:
