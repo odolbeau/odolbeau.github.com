@@ -8,7 +8,7 @@ tags: [politique, internet]
 
 **Internet** occupe une place de plus en plus importante dans notre vie et de plus en plus de d'**hommes politiques** expriment leur opinion sur le sujet.
 
-En internautes avisez que vous êtes, vous avez forcément entendu parler d'<a title="Loi création et internet sur Wikipedia" href="http://fr.wikipedia.org/wiki/Loi_Cr%C3%A9ation_et_Internet">HADOPI</a>, de <a title="Loi DADVSI sur Wikipedia" href="http://fr.wikipedia.org/wiki/Loi_DADVSI">DADVSI</a>, de <a title="LOPPSI sur Wikipedia" href="http://fr.wikipedia.org/wiki/LOPPSI">LOPPSI </a>(ou LOPPSI 2) ou encore des pare-feux disponibles dans Open Office.
+En internautes avisés que vous êtes, vous avez forcément entendu parler d'<a title="Loi création et internet sur Wikipedia" href="http://fr.wikipedia.org/wiki/Loi_Cr%C3%A9ation_et_Internet">HADOPI</a>, de <a title="Loi DADVSI sur Wikipedia" href="http://fr.wikipedia.org/wiki/Loi_DADVSI">DADVSI</a>, de <a title="LOPPSI sur Wikipedia" href="http://fr.wikipedia.org/wiki/LOPPSI">LOPPSI </a>(ou LOPPSI 2) ou encore des pare-feux disponibles dans Open Office.
 
 Plus récemment, Jacques Myard affirme qu'il est nécessaire de **nationaliser Internet** en s'inspirant du **modèle chinois** (plus d'infos sur son <a title="Site officiel de Jacques Myard" href="http://www.jacques-myard.org/">site officiel</a> -> Dans les médias -> Communiqués). Je vous conseille d'ailleurs de lire la <a title="Réaction de Benjamin Bayard suite au communiqué de presse de Jacques Myard" href="http://blog.fdn.fr/post/2009/12/18/Il-faut-r%C3%A9pondre-%C3%A0-Jacques-Myard">réaction de Benjamin Bayard</a>, président de <a title="Site du FDN" href="http://www.fdn.fr/">FDN</a>.
 
