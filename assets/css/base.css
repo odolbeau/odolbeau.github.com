@@ -7,13 +7,17 @@ body {
 }
 
 /* Links */
+
 a {
-    color: #838C1C;
+    color: #3a87ad;
     text-decoration: none;
 }
 a:hover {
-    color: #A8B326;
     text-decoration: underline;
+}
+
+.alert-info a {
+    color: #00a7f9;
 }
 
 /* Listes */
