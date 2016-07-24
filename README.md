@@ -3,7 +3,7 @@ odolbeau blog
 
 To install dependencies:
 
-    make install
+    make
 
 To build this blog:
 

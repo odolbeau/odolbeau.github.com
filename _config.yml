@@ -4,7 +4,7 @@ highlighter: rouge
 permalink:  /blog/:title.html
 markdown: kramdown
 
-url: http://odolbeau.fr
+url: https://odolbeau.fr
 
 exclude: [vendor]
 

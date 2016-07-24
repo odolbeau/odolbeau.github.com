@@ -2,7 +2,7 @@
 layout: base
 ---
 
-<article itemscope itemtype="http://schema.org/BlogPosting">
+<article itemscope itemtype="https://schema.org/BlogPosting">
     <header>
         <h1 itemprop="name">{{ page.title }}</h1>
         <p class="meta">
@@ -17,10 +17,10 @@ layout: base
         <div class="alert alert-info">
             <h4>It's only the beginning!</h4>
             <p>
-                You want to react to this post? You can do it <a href="https://twitter.com/odolbeau">on twitter</a>! :)<br />
+                You want to react to this post? You can do it <a href="//twitter.com/odolbeau">on twitter</a>! :)<br />
             </p>
             <p>
-                Found a typo? <a href="http://github.com/odolbeau/odolbeau.github.com/edit/master/_posts/{{ page.date | date: "%Y-%m-%d" }}-{{ page.title | remove: " -" | replace: " ", "-" | downcase }}.md">Fork and edit this post</a> would be really great. :D Thanks in advance!<br />
+                Found a typo? <a href="//github.com/odolbeau/odolbeau.github.com/edit/master/_posts/{{ page.date | date: "%Y-%m-%d" }}-{{ page.title | remove: " -" | replace: " ", "-" | downcase }}.md">Fork and edit this post</a> would be really great. :D Thanks in advance!<br />
                 {% if site.related_posts != empty %}
             </p>
             <p>
